@@ -1,0 +1,19 @@
+version: "3"
+
+
+
+services:
+  students-database:
+     image: mysql:latest
+     environment:
+        MYSQL_ROOT_PASSWORD: "123456"
+        MYSQL_DATABASE: springboot
+     ports:
+        - "3306:3306"
+  students:
+     depends_on:
+        - students-database
+     image:
+        students:latest
+     ports:
+        - "8080:8080"
